@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using WebApp.Game.Entities
+@model List<Joiner>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div id="listJoin">
+    @foreach (var join in Model)
+    {
+        <div class="btn btn-success m-2">join.User.UserName</div>
+    }
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <button class="btn btn-dark" id="test">Test</button>
+}
+else
+{
+    <button class="btn btn-dark" id="test" disabled>Test</button>
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <script>
+        const userName = "@ViewBag.currentUserName";
+    </script>
+}
+@section Scripts {
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script src="~/js/game.js"></script>
+}
